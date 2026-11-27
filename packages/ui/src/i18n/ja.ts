@@ -248,7 +248,7 @@ export const dict = {
   "ui.promptInput.dropFiles.image": "画像またはファイルをドロップして追加します",
   "ui.promptInput.dropFiles.pdf": "PDF またはファイルをドロップして追加します",
   "ui.promptInput.dropFiles.imagePdf": "画像、PDF、またはファイルをドロップして追加します",
-  "ui.promptInput.exitShell": "出口",
+  "ui.promptInput.exitShell": "終了",
   "ui.sessionTimeline.notice.agentChanged": "エージェントが変更されました",
 
   "ui.sessionTurn.retry.attemptWaiting.one": "試行 {{attempt}} - {{count}} 秒後に再試行します",
