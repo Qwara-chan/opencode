@@ -47,6 +47,16 @@ When translating a page of the latest docs (`services/site/src/docs/content`):
 - A page you do not translate is served in English under that language's chrome, with a notice, so partial translations are safe.
 - From `services/site`, run `bun src/docs/script/check-translations.ts <locale>` to list missing pages and pages whose English changed since their stamp, then run it with `--stamp` once the language is up to date. Stamps live in `src/docs/i18n/stamps/<locale>.json`.
 
+## Review before shipping a language
+
+- Compare every page paragraph by paragraph, list item, table row and code block against the CURRENT English page, not an older translation, and re-read pages whose English changed since their stamp.
+- Read the result as native prose: remove translationese and literal calques, and keep the tone of the English page.
+- Check numbers, prices, model IDs and version numbers against the English.
+- Keep proper nouns, identifiers and code exactly as written, per `src/docs/i18n/glossary.md`.
+- Keep the English heading order, depth and count; anchors depend on it.
+- Apply the shared terms in `src/docs/i18n/glossary.md` and the locale preferences in `.opencode/glossary/<locale>.md`.
+- Spot-check two or three rendered pages in the built site: title, sidebar and code blocks.
+
 ---
 
 # Locale-Specific Glossaries
