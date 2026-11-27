@@ -114,14 +114,15 @@ export function strip(pathname: string) {
 }
 
 /**
- * True for an address that takes a locale prefix. The docs (English only, at /docs, with the V1
- * docs at /v1/docs and the V2 docs' old /v2), other apps on the domain (the Console, the old
+ * True for an address that takes a locale prefix. The latest docs take one too (English at /docs,
+ * every other language at /<locale>/docs). The other apps on the domain (the Console, the old
  * dashboard) and the English-only pages (the changelog and the font) have one address in every
  * language: route() leaves them unprefixed, and their prefixed addresses redirect there
- * (middleware.ts).
+ * (middleware.ts). The V1 docs (/v1/docs, and the V2 docs' old /v2) keep their own addresses and
+ * languages.
  */
 export function localized(pathname: string) {
-  return !/^\/(v1|v2|docs|console|auth|workspace|changelog|font)(?=$|[/.?#])/.test(strip(pathname))
+  return !/^\/(v1|v2|console|auth|workspace|changelog|font)(?=$|[/.?#])/.test(strip(pathname))
 }
 
 export function route(locale: Locale, pathname: string) {
@@ -251,11 +252,7 @@ export function localeFromRequest(request: Request) {
 
 export function pageLocale(request: Request) {
   const pathname = new URL(request.url).pathname
-  return (
-    parseLocale(request.headers.get(LOCALE_HEADER)) ??
-    fromPathname(pathname) ??
-    ("en" satisfies Locale)
-  )
+  return parseLocale(request.headers.get(LOCALE_HEADER)) ?? fromPathname(pathname) ?? ("en" satisfies Locale)
 }
 
 export function cookie(locale: Locale) {
