@@ -118,6 +118,8 @@ For that entry, OpenCode downloads each file from `<base-url>/git-release/<file>
 
 Each downloaded skill directory becomes a source root named after the entry, so both `git-release.md` and `SKILL.md` have the ID `git-release`.
 
+This format is specific to OpenCode. It is not the [Agent Skills discovery RFC](https://github.com/cloudflare/agent-skills-discovery-rfc) format: OpenCode doesn't read `/.well-known/agent-skills/` paths, `$schema`, or per-skill `type`, `url`, and `digest` fields. A catalog that serves both needs a separate OpenCode `index.json`.
+
 ## Frontmatter
 
 Use frontmatter to name the skill and control where it appears:
